@@ -15,7 +15,7 @@ public class MainFrame extends JFrame{
 
     public MainFrame()
     {
-        super("Hello");
+        super("Obliczanie pierwiastków funkcji metodą bisekcji");
         initFrame();
         JLabel labels[] = new JLabel[7];
         initLabels(labels);
@@ -23,65 +23,53 @@ public class MainFrame extends JFrame{
         TextArea textArea = initTextArea();
         JButton button = new JButton("Wybierz plik z danymi");
         JButton button1 = new JButton("Użyj wpisanych danych");
-        button1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String dataString = textArea.getText();
-                Scanner scanner = new Scanner(dataString);
-                scanner.useLocale(Locale.US);
-                ArrayList<Double> data = new ArrayList<>();
-                while(scanner.hasNextDouble())
-                {
-                    data.add(scanner.nextDouble());
-                }
-
-                try{
-                    RootValueFinder rootValueFinder = new RootValueFinder(data);
-                    labels[1].setText("Wybrana funkcja: "+ rootValueFinder.getPolynomialFunction().toString());
-                    labels[2].setText("Zadany przedział: " + rootValueFinder.getRange());
-                    labels[3].setText("Dokładność obliczanej wartości pierwiastka: " + rootValueFinder.getEps());
-                    labels[4].setText("Maksymalna liczba iteracji: " + rootValueFinder.getMax());
-                    labels[5].setText("Miejsce zerowe wybranej funkcji to: " + rootValueFinder.findRootValueOfFunction());
-                    labels[6].setText("Komunikat: Miejsce zerowe znalezione z odpowiednią dokładnością");
-                }
-                catch(Exception exception)
-                {
-                    labels[6].setText("Komunikat: "+ exception.toString());
-                    labels[5].setText("Miejsce zerowe wybranej funkcji to: NIE ZNALEZIONO");
-                }
-
+        button1.addActionListener(e -> {
+            String dataString = textArea.getText();
+            Scanner scanner = new Scanner(dataString);
+            scanner.useLocale(Locale.US);
+            ArrayList<Double> data = new ArrayList<>();
+            while(scanner.hasNextDouble())
+            {
+                data.add(scanner.nextDouble());
+            }
+            try{
+                RootValueFinder rootValueFinder = new RootValueFinder(data);
+                LabelsUpdate labelsUpdate = new LabelsUpdate();
+                labelsUpdate.update(labels, rootValueFinder);
+            }
+            catch (Exception exception){
+                labels[6].setText("Komunikat: "+ exception.toString());
+                labels[5].setText("Miejsce zerowe wybranej funkcji to: NIE ZNALEZIONO");
             }
         });
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFileChooser jFileChooser = new JFileChooser();
-                jFileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-                jFileChooser.showSaveDialog(MainFrame.this);
-                String filename = jFileChooser.getSelectedFile().getAbsolutePath();
-                FileReader fileReader = new FileReader(filename);
-                textArea.setText("");
-                try{
-                    RootValueFinder rootValueFinder = new RootValueFinder(fileReader.getData());
-                    labels[1].setText("Wybrana funkcja: "+ rootValueFinder.getPolynomialFunction().toString());
-                    labels[2].setText("Zadany przedział: " + rootValueFinder.getRange());
-                    labels[3].setText("Dokładność obliczanej wartości pierwiastka: " + rootValueFinder.getEps());
-                    labels[4].setText("Maksymalna liczba iteracji: " + rootValueFinder.getMax());
-                    labels[5].setText("Miejsce zerowe wybranej funkcji to: " + rootValueFinder.findRootValueOfFunction());
-                    labels[6].setText("Komunikat: Miejsce zerowe znalezione z odpowiednią dokładnością");
-                }
-                catch(Exception exception)
-                {
-                    labels[6].setText("Komunikat: "+ exception.toString());
-                    labels[5].setText("Miejsce zerowe wybranej funkcji to: NIE ZNALEZIONO");
-                }
-
+        button.addActionListener(e -> {
+            JFileChooser jFileChooser = initFileChooser();
+            String filename = jFileChooser.getSelectedFile().getAbsolutePath();
+            FileReader fileReader = new FileReader(filename);
+            textArea.setText("");
+            try{
+                RootValueFinder rootValueFinder = new RootValueFinder(fileReader.getData());
+                LabelsUpdate labelsUpdate = new LabelsUpdate();
+                labelsUpdate.update(labels, rootValueFinder);
             }
+            catch(Exception exception)
+            {
+                labels[6].setText("Komunikat: "+ exception.toString());
+                labels[5].setText("Miejsce zerowe wybranej funkcji to: NIE ZNALEZIONO");
+            }
+
         });
         button.setSize(100,70);
         addToContainer(labels, container, textArea, button, button1);
         setVisible(true);
 
+    }
+
+    private JFileChooser initFileChooser() {
+        JFileChooser jFileChooser = new JFileChooser();
+        jFileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+        jFileChooser.showSaveDialog(MainFrame.this);
+        return jFileChooser;
     }
 
     private void addToContainer(JLabel[] labels, Container container, TextArea textArea, JButton button, JButton button1) {
