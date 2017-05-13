@@ -16,11 +16,11 @@ class MainFrame extends JFrame{
         initLabels(labels);
         Container container = this.getContentPane();
         TextArea textArea = initTextArea();
-        JButton button = new JButton("Wybierz plik z danymi");
-        JButton button1 = new JButton("Użyj wpisanych danych");
-        initUserDataButton(labels, textArea, button1);
-        initFileChoosingButton(labels, textArea, button);
-        addToContainer(labels, container, textArea, button, button1);
+        JButton fileChoosingButton = new JButton("Wybierz plik z danymi (plik .txt)");
+        JButton userInputButton = new JButton("Użyj wpisanych danych");
+        initUserDataButton(labels, textArea, userInputButton);
+        initFileChoosingButton(labels, textArea, fileChoosingButton);
+        addToContainer(labels, container, textArea, fileChoosingButton, userInputButton);
         setVisible(true);
 
     }
@@ -78,10 +78,10 @@ class MainFrame extends JFrame{
     }
 
     private void addToContainer(JLabel[] labels, Container container, TextArea textArea, JButton button, JButton button1) {
-        container.add(button);
         container.add(labels[0]);
         container.add(textArea);
         container.add(button1);
+        container.add(button);
         for(int i=1; i<labels.length; i++)
             container.add(labels[i]);
     }
@@ -96,7 +96,7 @@ class MainFrame extends JFrame{
 
     private void initFrame() {
         setSize(900,300);
-        setResizable(false);
+        setResizable(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLayout(new GridLayout(10,1));
     }
