@@ -5,22 +5,22 @@ class RootValueFinder {
     private double k;
     private double l;
 
-    public double getEps() {
+    double getEps() {
         return eps;
     }
 
-    public double getMax() {
+    double getMax() {
         return max;
     }
 
     private double eps;
     private double max;
 
-    public PolynomialFunction getPolynomialFunction() {
+    PolynomialFunction getPolynomialFunction() {
         return polynomialFunction;
     }
 
-    public String getRange()
+    String getRange()
     {
        if(k<=l)
            return " ( " + k + " , " + l + " ) ";
@@ -50,7 +50,7 @@ class RootValueFinder {
         }
         double leftEdge = k;
         double rightEdge = l;
-        double rootValue=-1;
+        double rootValue;
         for(int i=0; i<max; i++)
         {
             rootValue = (leftEdge+rightEdge)/2;

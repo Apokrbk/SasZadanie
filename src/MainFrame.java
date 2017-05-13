@@ -1,19 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
 
-public class MainFrame extends JFrame{
+class MainFrame extends JFrame{
 
-    private JButton openFile = new JButton("Choose file");
-
-
-    public MainFrame()
+    MainFrame()
     {
         super("Obliczanie pierwiastków funkcji metodą bisekcji");
         initFrame();
@@ -23,15 +18,18 @@ public class MainFrame extends JFrame{
         TextArea textArea = initTextArea();
         JButton button = new JButton("Wybierz plik z danymi");
         JButton button1 = new JButton("Użyj wpisanych danych");
+        initUserDataButton(labels, textArea, button1);
+        initFileChoosingButton(labels, textArea, button);
+        addToContainer(labels, container, textArea, button, button1);
+        setVisible(true);
+
+    }
+
+    private void initUserDataButton(JLabel[] labels, TextArea textArea, JButton button1) {
         button1.addActionListener(e -> {
-            String dataString = textArea.getText();
-            Scanner scanner = new Scanner(dataString);
-            scanner.useLocale(Locale.US);
+
             ArrayList<Double> data = new ArrayList<>();
-            while(scanner.hasNextDouble())
-            {
-                data.add(scanner.nextDouble());
-            }
+            fillDataFromUserInput(textArea, data);
             try{
                 RootValueFinder rootValueFinder = new RootValueFinder(data);
                 LabelsUpdate labelsUpdate = new LabelsUpdate();
@@ -42,6 +40,17 @@ public class MainFrame extends JFrame{
                 labels[5].setText("Miejsce zerowe wybranej funkcji to: NIE ZNALEZIONO");
             }
         });
+    }
+
+    private void fillDataFromUserInput(TextArea textArea, ArrayList<Double> data) {
+        String dataString = textArea.getText();
+        Scanner scanner = new Scanner(dataString);
+        scanner.useLocale(Locale.US);
+        while(scanner.hasNextDouble())
+            data.add(scanner.nextDouble());
+    }
+
+    private void initFileChoosingButton(JLabel[] labels, TextArea textArea, JButton button) {
         button.addActionListener(e -> {
             JFileChooser jFileChooser = initFileChooser();
             String filename = jFileChooser.getSelectedFile().getAbsolutePath();
@@ -59,10 +68,6 @@ public class MainFrame extends JFrame{
             }
 
         });
-        button.setSize(100,70);
-        addToContainer(labels, container, textArea, button, button1);
-        setVisible(true);
-
     }
 
     private JFileChooser initFileChooser() {
@@ -92,7 +97,7 @@ public class MainFrame extends JFrame{
     private void initFrame() {
         setSize(900,300);
         setResizable(false);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLayout(new GridLayout(10,1));
     }
 

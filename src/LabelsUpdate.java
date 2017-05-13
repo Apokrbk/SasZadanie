@@ -1,11 +1,8 @@
 import javax.swing.*;
 
-/**
- * Created by Apok on 13.05.2017.
- */
-public class LabelsUpdate {
+class LabelsUpdate {
 
-    public void update(JLabel labels[], RootValueFinder rootValueFinder)
+    void update(JLabel labels[], RootValueFinder rootValueFinder)
     {
         try{
             labels[1].setText("Wybrana funkcja: "+ rootValueFinder.getPolynomialFunction().toString());
