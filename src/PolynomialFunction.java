@@ -1,9 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Apok on 13.05.2017.
- */
 public class PolynomialFunction {
     ArrayList<Double> coefficients = new ArrayList<>();
 
