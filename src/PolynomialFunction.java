@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class PolynomialFunction {
-    ArrayList<Double> coefficients = new ArrayList<>();
+class PolynomialFunction {
+    private ArrayList<Double> coefficients = new ArrayList<>();
 
-    public PolynomialFunction(List<Double> coefficients)
+    PolynomialFunction(List<Double> coefficients)
     {
         for (int i=4; i<coefficients.size(); i++)
         {
@@ -12,15 +12,7 @@ public class PolynomialFunction {
         }
     }
 
-    public PolynomialFunction(double... coefficients)
-    {
-        for (Double coefficient : coefficients)
-        {
-            this.coefficients.add(coefficient);
-        }
-    }
-
-    public double calculateValueOfFunctionAtTheGivenPoint(double x)
+    double calculateValueOfFunctionAtTheGivenPoint(double x)
     {
         double value=0;
         int size = coefficients.size();

@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class FileReader {
+class FileReader {
 
-    public ArrayList<Double> getData() {
+    ArrayList<Double> getData() {
         return data;
     }
 
-    ArrayList<Double> data = new ArrayList<>();
-    public FileReader(String nameOfFile)
+    private ArrayList<Double> data = new ArrayList<>();
+    FileReader(String nameOfFile)
     {
         try {
             Scanner scanner = new Scanner(new File(nameOfFile));
@@ -24,11 +24,4 @@ public class FileReader {
             e.printStackTrace();
         }
     }
-
-    public double getSpecifiedData(int i)
-    {
-        return data.get(i);
-    }
-
-
 }

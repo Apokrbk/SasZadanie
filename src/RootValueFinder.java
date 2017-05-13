@@ -1,23 +1,11 @@
 import java.util.List;
 
-/**
- * Created by Apok on 13.05.2017.
- */
-public class RootValueFinder {
+class RootValueFinder {
 
-    double k, l, eps, max;
-    PolynomialFunction polynomialFunction;
+    private double k, l, eps, max;
+    private PolynomialFunction polynomialFunction;
 
-    public RootValueFinder(double k, double l, double eps, int max, List<Double> coefficients)
-    {
-        this.k = k;
-        this.l = l;
-        this.eps = eps;
-        this.max = max;
-        polynomialFunction = new PolynomialFunction(coefficients);
-    }
-
-    public RootValueFinder(List<Double> data)
+    RootValueFinder(List<Double> data)
     {
         this.k = data.get(0);
         this.l = data.get(1);
@@ -27,7 +15,7 @@ public class RootValueFinder {
 
     }
 
-    public double findRootValueOfFunction()
+    double findRootValueOfFunction()
     {
         if(areEdgesOfRangeSameSigns(k,l))
         {
