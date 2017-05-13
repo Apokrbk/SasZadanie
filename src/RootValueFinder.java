@@ -5,8 +5,7 @@ import java.util.List;
  */
 public class RootValueFinder {
 
-    double k, l, eps;
-    int max;
+    double k, l, eps, max;
     PolynomialFunction polynomialFunction;
 
     public RootValueFinder(double k, double l, double eps, int max, List<Double> coefficients)
@@ -16,6 +15,16 @@ public class RootValueFinder {
         this.eps = eps;
         this.max = max;
         polynomialFunction = new PolynomialFunction(coefficients);
+    }
+
+    public RootValueFinder(List<Double> data)
+    {
+        this.k = data.get(0);
+        this.l = data.get(1);
+        this.eps = data.get(2);
+        this.max = data.get(3);
+        polynomialFunction = new PolynomialFunction(data);
+
     }
 
     public double findRootValueOfFunction()

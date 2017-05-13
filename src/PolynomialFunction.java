@@ -6,6 +6,14 @@ public class PolynomialFunction {
 
     public PolynomialFunction(List<Double> coefficients)
     {
+        for (int i=4; i<coefficients.size(); i++)
+        {
+            this.coefficients.add(coefficients.get(i));
+        }
+    }
+
+    public PolynomialFunction(double... coefficients)
+    {
         for (Double coefficient : coefficients)
         {
             this.coefficients.add(coefficient);

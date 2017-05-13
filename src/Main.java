@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.ArrayList;
 
 public class Main {
@@ -8,8 +9,8 @@ public class Main {
         wspolczynniki.add(-1.6);
         wspolczynniki.add(12.8);
         wspolczynniki.add(3.0);
-        PolynomialFunction polynomialFunction = new PolynomialFunction(wspolczynniki);
-        RootValueFinder rootValueFinder = new RootValueFinder(-10,20,1,15,wspolczynniki);
+        FileReader fileReader = new FileReader("data.txt");
+        RootValueFinder rootValueFinder = new RootValueFinder(fileReader.getData());
         System.out.println("Wartosc funkcji w punkcie: " + 5 + "  jest rowna:  "
                 + rootValueFinder.findRootValueOfFunction());
     }
