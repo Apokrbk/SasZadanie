@@ -35,7 +35,7 @@ public class MainFrame extends JFrame{
         TextArea textArea = new TextArea();
         textArea.setEditable(true);
         textArea.setFont(new Font("Serif", Font.PLAIN, 20));
-        JButton button = new JButton("Wybierz plik z funkcją");
+        JButton button = new JButton("Wybierz plik z danymi");
         JButton button1 = new JButton("Użyj wpisanych danych");
         button1.addActionListener(new ActionListener() {
             @Override
