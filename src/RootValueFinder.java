@@ -28,7 +28,8 @@ class RootValueFinder {
         for(int i=0; i<max; i++)
         {
             rootValue = (leftEdge+rightEdge)/2;
-            if(Math.abs(polynomialFunction.calculateValueOfFunctionAtTheGivenPoint(rootValue)) < eps)
+            if(Math.abs(polynomialFunction.calculateValueOfFunctionAtTheGivenPoint(leftEdge)-
+                    polynomialFunction.calculateValueOfFunctionAtTheGivenPoint(rightEdge)) < eps)
                 break;
             if(!areEdgesOfRangeSameSigns(leftEdge, rootValue))
             {
@@ -38,6 +39,7 @@ class RootValueFinder {
             {
                 leftEdge = rootValue;
             }
+            System.out.println("HEJ "+ i);
         }
 
         return rootValue;
