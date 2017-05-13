@@ -30,8 +30,10 @@ class RootValueFinder {
 
     private PolynomialFunction polynomialFunction;
 
-    RootValueFinder(List<Double> data)
+    RootValueFinder(List<Double> data) throws Exception
     {
+        if(data.size()<= 4)
+            throw new Exception("Niepoprawny format danych lub za mało parametrów");
         this.k = data.get(0);
         this.l = data.get(1);
         this.eps = data.get(2);
@@ -40,12 +42,11 @@ class RootValueFinder {
 
     }
 
-    double findRootValueOfFunction()
+    double findRootValueOfFunction() throws Exception
     {
         if(areEdgesOfRangeSameSigns(k,l))
         {
-            System.out.println("Funkcja nie spełnia założeń. Miejsce zerowe nie może zostać odnalezione.");
-            return -1;
+            throw new Exception("Funkcja nie spełnia założeń. Ten sam znak funkcji na końcach przedziału.");
         }
         double leftEdge = k;
         double rightEdge = l;
@@ -54,15 +55,13 @@ class RootValueFinder {
         {
             rootValue = (leftEdge+rightEdge)/2;
             if(isRangeTightEnough(leftEdge, rightEdge))
-                break;
+                return rootValue;
             if(!areEdgesOfRangeSameSigns(leftEdge, rootValue))
                 rightEdge = rootValue;
             else
                 leftEdge = rootValue;
-            System.out.println("HEJ "+ i);
         }
-
-        return rootValue;
+        throw new Exception("Maksymalna liczba iteracji osiągnięta. Nie udało się znaleźć miejsca zerowego z zadaną dokładnością");
     }
 
     private boolean isRangeTightEnough(double leftEdge, double rightEdge) {
