@@ -23,4 +23,18 @@ class PolynomialFunction {
         return value;
     }
 
+    public String toString()
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+        for(int i=0; i<coefficients.size(); i++)
+        {
+            stringBuilder.append(coefficients.get(i));
+            stringBuilder.append("*x^");
+            stringBuilder.append(i);
+            if(i != coefficients.size()-1)
+                stringBuilder.append(" + ");
+        }
+        return stringBuilder.toString();
+    }
+
 }

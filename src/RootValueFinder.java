@@ -2,10 +2,30 @@ import java.util.List;
 
 class RootValueFinder {
 
-    private double k, l, eps, max;
+    private double k;
+    private double l;
+
+    public double getEps() {
+        return eps;
+    }
+
+    public double getMax() {
+        return max;
+    }
+
+    private double eps;
+    private double max;
 
     public PolynomialFunction getPolynomialFunction() {
         return polynomialFunction;
+    }
+
+    public String getRange()
+    {
+       if(k<=l)
+           return " ( " + k + " , " + l + " ) ";
+       else
+           return " ( " + l + " , " + k + " ) ";
     }
 
     private PolynomialFunction polynomialFunction;
