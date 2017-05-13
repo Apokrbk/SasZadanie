@@ -28,21 +28,21 @@ class RootValueFinder {
         for(int i=0; i<max; i++)
         {
             rootValue = (leftEdge+rightEdge)/2;
-            if(Math.abs(polynomialFunction.calculateValueOfFunctionAtTheGivenPoint(leftEdge)-
-                    polynomialFunction.calculateValueOfFunctionAtTheGivenPoint(rightEdge)) < eps)
+            if(isRangeTightEnough(leftEdge, rightEdge))
                 break;
             if(!areEdgesOfRangeSameSigns(leftEdge, rootValue))
-            {
                 rightEdge = rootValue;
-            }
             else
-            {
                 leftEdge = rootValue;
-            }
             System.out.println("HEJ "+ i);
         }
 
         return rootValue;
+    }
+
+    private boolean isRangeTightEnough(double leftEdge, double rightEdge) {
+        return Math.abs(polynomialFunction.calculateValueOfFunctionAtTheGivenPoint(leftEdge)-
+                polynomialFunction.calculateValueOfFunctionAtTheGivenPoint(rightEdge)) < eps;
     }
 
     private boolean areEdgesOfRangeSameSigns(double leftEdge, double rightEdge)
