@@ -22,4 +22,5 @@ class PolynomialFunction {
         }
         return value;
     }
+
 }

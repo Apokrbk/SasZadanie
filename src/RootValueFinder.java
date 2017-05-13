@@ -3,6 +3,11 @@ import java.util.List;
 class RootValueFinder {
 
     private double k, l, eps, max;
+
+    public PolynomialFunction getPolynomialFunction() {
+        return polynomialFunction;
+    }
+
     private PolynomialFunction polynomialFunction;
 
     RootValueFinder(List<Double> data)

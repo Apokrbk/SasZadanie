@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SasZadanie:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SasZadanie_jar</output-path>
+    <root id="archive" name="SasZadanie.jar">
+      <element id="module-output" name="SasZadanie" />
+    </root>
+  </artifact>
+</component>
