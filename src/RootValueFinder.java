@@ -20,7 +20,7 @@ class RootValueFinder {
         return polynomialFunction;
     }
 
-    String getRange()
+    String getRangeAsString()
     {
        if(k<=l)
            return " ( " + k + " , " + l + " ) ";
@@ -54,7 +54,7 @@ class RootValueFinder {
         for(int i=0; i<max; i++)
         {
             rootValue = (leftEdge+rightEdge)/2;
-            if(isRangeTightEnough(leftEdge, rightEdge))
+            if(isValueCloseEnough(rootValue))
                 return rootValue;
             if(!areEdgesOfRangeSameSigns(leftEdge, rootValue))
                 rightEdge = rootValue;
@@ -64,9 +64,8 @@ class RootValueFinder {
         throw new Exception("Maksymalna liczba iteracji osiągnięta. Nie udało się znaleźć miejsca zerowego z zadaną dokładnością");
     }
 
-    private boolean isRangeTightEnough(double leftEdge, double rightEdge) {
-        return Math.abs(polynomialFunction.calculateValueOfFunctionAtTheGivenPoint(leftEdge)-
-                polynomialFunction.calculateValueOfFunctionAtTheGivenPoint(rightEdge)) < eps;
+    private boolean isValueCloseEnough(double rootValue) {
+        return Math.abs(polynomialFunction.calculateValueOfFunctionAtTheGivenPoint(rootValue))<eps;
     }
 
     private boolean areEdgesOfRangeSameSigns(double leftEdge, double rightEdge)

@@ -6,7 +6,7 @@ class LabelsUpdate {
     {
         try{
             labels[1].setText("Wybrana funkcja: "+ rootValueFinder.getPolynomialFunction().toString());
-            labels[2].setText("Zadany przedział: " + rootValueFinder.getRange());
+            labels[2].setText("Zadany przedział: " + rootValueFinder.getRangeAsString());
             labels[3].setText("Dokładność obliczanej wartości pierwiastka: " + rootValueFinder.getEps());
             labels[4].setText("Maksymalna liczba iteracji: " + rootValueFinder.getMax());
             labels[5].setText("Miejsce zerowe wybranej funkcji to: " + rootValueFinder.findRootValueOfFunction());

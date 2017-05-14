@@ -73,7 +73,7 @@ class MainFrame extends JFrame{
     private JFileChooser initFileChooser() {
         JFileChooser jFileChooser = new JFileChooser();
         jFileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-        jFileChooser.showSaveDialog(MainFrame.this);
+        jFileChooser.showOpenDialog(MainFrame.this);
         return jFileChooser;
     }
 
