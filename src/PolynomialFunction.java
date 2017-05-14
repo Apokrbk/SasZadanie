@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class PolynomialFunction {
@@ -13,9 +14,7 @@ public class PolynomialFunction {
 
     PolynomialFunction(Double... coefficients)
     {
-        for (Double coefficient : coefficients) {
-            this.coefficients.add(coefficient);
-        }
+        Collections.addAll(this.coefficients, coefficients);
     }
 
     double calculateValueOfFunctionAtTheGivenPoint(double x)

@@ -2,9 +2,6 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by Apok on 14.05.2017.
- */
 public class PolynomialFunctionTest {
     @org.junit.Test
     public void calculateValueOfFunctionAtTheGivenPoint() throws Exception {

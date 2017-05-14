@@ -2,9 +2,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by Apok on 14.05.2017.
- */
 public class RootValueFinderTest {
     @Test
     public void findRootValueOfFunction() throws Exception {
@@ -21,6 +18,18 @@ public class RootValueFinderTest {
     @Test(expected = Exception.class)
     public void findRootValueOfFunction3() throws Exception {
         RootValueFinder rootValueFinder = new RootValueFinder(-10.0, 10.0, 0.000001, 20, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0);
+        assertEquals(0, rootValueFinder.findRootValueOfFunction(), 0);
+    }
+
+    @Test
+    public void findRootValueOfFunction4() throws Exception {
+        RootValueFinder rootValueFinder = new RootValueFinder(0, 5 , 0.001, 40, -100.0, 0.0, 4.444, -1.11, 9.234);
+        assertEquals(1.77757, rootValueFinder.findRootValueOfFunction(), 0.001);
+    }
+
+    @Test(expected = Exception.class)
+    public void findRootValueOfFunction5() throws Exception {
+        RootValueFinder rootValueFinder = new RootValueFinder(10.0, 10.0, 0.1, 20666, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0);
         assertEquals(0, rootValueFinder.findRootValueOfFunction(), 0);
     }
 
