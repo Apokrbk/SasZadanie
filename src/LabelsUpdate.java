@@ -4,7 +4,8 @@ class LabelsUpdate {
 
     void update(JLabel labels[], RootValueFinder rootValueFinder)
     {
-        try{
+        try
+        {
             labels[1].setText("Wybrana funkcja: "+ rootValueFinder.getPolynomialFunction().toString());
             labels[2].setText("Zadany przedział: " + rootValueFinder.getRangeAsString());
             labels[3].setText("Dokładność obliczanej wartości pierwiastka: " + rootValueFinder.getEps());

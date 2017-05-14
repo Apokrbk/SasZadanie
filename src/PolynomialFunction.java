@@ -7,9 +7,8 @@ public class PolynomialFunction {
 
     PolynomialFunction(List<Double> coefficients)
     {
-        for (Double coefficient : coefficients) {
+        for (Double coefficient : coefficients)
             this.coefficients.add(coefficient);
-        }
     }
 
     PolynomialFunction(Double... coefficients)
@@ -22,9 +21,7 @@ public class PolynomialFunction {
         double value=0;
         int size = coefficients.size();
         for(int i=0; i<size; i++)
-        {
             value += coefficients.get(i) * Math.pow(x, i);
-        }
         return value;
     }
 

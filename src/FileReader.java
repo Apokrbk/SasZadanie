@@ -10,14 +10,15 @@ class FileReader {
     private ArrayList<Double> data = new ArrayList<>();
     FileReader(String nameOfFile)
     {
-        try {
+        try
+        {
             Scanner scanner = new Scanner(new File(nameOfFile));
             scanner.useLocale(Locale.US);
             while(scanner.hasNextDouble())
-            {
                 data.add(scanner.nextDouble());
-            }
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e)
+        {
             e.printStackTrace();
         }
     }
