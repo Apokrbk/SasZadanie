@@ -69,8 +69,7 @@ class RootValueFinder {
             //sprawdzamy czy wartosc w połowie przedziału jest już wystarczającym przybliżeniem miejsca zerowego funkcji
             if(isValueCloseEnough(rootValue))
                 return rootValue;
-            //sprawdzamy którą połowę przedziału wybrać do następnej iteracji
-            //zmniejszamy przeszukiwany przedział o połowę
+            //sprawdzamy którą połowę przedziału wybrać i zmniejszamy przeszukiwany przedział o połowę
             if(!areEdgesOfRangeSameSigns(leftEdge, rootValue))
                 rightEdge = rootValue;
             else
