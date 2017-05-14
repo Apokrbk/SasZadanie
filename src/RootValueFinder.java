@@ -2,10 +2,10 @@ import java.util.List;
 
 class RootValueFinder {
 
-    private double k;
-    private double l;
-    private double eps;
-    private double max;
+    private double k; //poczatek przedzialu
+    private double l; //koniec przedzialu
+    private double eps; //dokladnosc z jaka obliczamy
+    private double max; //maksymalna liczba iteracji
     private PolynomialFunction polynomialFunction;
 
     RootValueFinder(List<Double> data) throws Exception
@@ -63,7 +63,6 @@ class RootValueFinder {
         return ((polynomialFunction.calculateValueOfFunctionAtTheGivenPoint(leftEdge)<0) ==
                 (polynomialFunction.calculateValueOfFunctionAtTheGivenPoint(rightEdge)<0));
     }
-
 
     double getEps() {
         return eps;
