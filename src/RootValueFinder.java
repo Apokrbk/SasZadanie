@@ -42,6 +42,17 @@ class RootValueFinder {
 
     }
 
+    RootValueFinder(double k, double l, double eps, double max, Double... data) throws Exception
+    {
+        if(data.length == 0)
+            throw new Exception("Niepoprawny format danych lub za mało parametrów");
+        this.k = k;
+        this.l = l;
+        this.eps = eps;
+        this.max = max;
+        polynomialFunction = new PolynomialFunction(data);
+    }
+
     double findRootValueOfFunction() throws Exception
     {
         if(areEdgesOfRangeSameSigns(k,l))
