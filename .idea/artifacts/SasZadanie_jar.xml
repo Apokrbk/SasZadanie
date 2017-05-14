@@ -1,8 +1,10 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="SasZadanie:jar">
+  <artifact type="jar" build-on-make="true" name="SasZadanie:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/SasZadanie_jar</output-path>
     <root id="archive" name="SasZadanie.jar">
       <element id="module-output" name="SasZadanie" />
+      <element id="file-copy" path="$APPLICATION_HOME_DIR$/lib/junit.jar" />
+      <element id="file-copy" path="$APPLICATION_HOME_DIR$/lib/junit-4.12.jar" />
     </root>
   </artifact>
 </component>

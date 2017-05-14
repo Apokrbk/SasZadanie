@@ -66,7 +66,6 @@ class MainFrame extends JFrame{
                 labels[6].setText("Komunikat: "+ exception.toString());
                 labels[5].setText("Miejsce zerowe wybranej funkcji to: NIE ZNALEZIONO");
             }
-
         });
     }
 
@@ -95,7 +94,7 @@ class MainFrame extends JFrame{
     }
 
     private void initFrame() {
-        setSize(900,300);
+        setSize(1000,300);
         setResizable(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLayout(new GridLayout(10,1));
