@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 class MainFrame extends JFrame{
 
+    private LabelsUpdate labelsUpdate = new LabelsUpdate();
+
     MainFrame()
     {
         super("Obliczanie pierwiastków funkcji metodą bisekcji");
@@ -32,7 +34,6 @@ class MainFrame extends JFrame{
             fillDataFromUserInput(textArea, data);
             try{
                 RootValueFinder rootValueFinder = new RootValueFinder(data);
-                LabelsUpdate labelsUpdate = new LabelsUpdate();
                 labelsUpdate.update(labels, rootValueFinder);
             }
             catch (Exception exception){
@@ -58,7 +59,6 @@ class MainFrame extends JFrame{
             textArea.setText("");
             try{
                 RootValueFinder rootValueFinder = new RootValueFinder(fileReader.getData());
-                LabelsUpdate labelsUpdate = new LabelsUpdate();
                 labelsUpdate.update(labels, rootValueFinder);
             }
             catch(Exception exception)
