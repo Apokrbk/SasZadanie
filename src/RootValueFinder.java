@@ -6,29 +6,6 @@ class RootValueFinder {
     private double l;
     private double eps;
     private double max;
-
-    double getEps() {
-        return eps;
-    }
-
-    double getMax() {
-        return max;
-    }
-
-
-
-    PolynomialFunction getPolynomialFunction() {
-        return polynomialFunction;
-    }
-
-    String getRangeAsString()
-    {
-       if(k<=l)
-           return " ( " + k + " , " + l + " ) ";
-       else
-           return " ( " + l + " , " + k + " ) ";
-    }
-
     private PolynomialFunction polynomialFunction;
 
     RootValueFinder(List<Double> data) throws Exception
@@ -40,7 +17,6 @@ class RootValueFinder {
         this.eps = data.get(2);
         this.max = data.get(3);
         polynomialFunction = new PolynomialFunction(data.subList(4,data.size()));
-
     }
 
     RootValueFinder(double k, double l, double eps, double max, Double... data) throws Exception
@@ -87,4 +63,27 @@ class RootValueFinder {
         return ((polynomialFunction.calculateValueOfFunctionAtTheGivenPoint(leftEdge)<0) ==
                 (polynomialFunction.calculateValueOfFunctionAtTheGivenPoint(rightEdge)<0));
     }
+
+
+    double getEps() {
+        return eps;
+    }
+
+    double getMax() {
+        return max;
+    }
+
+    PolynomialFunction getPolynomialFunction() {
+        return polynomialFunction;
+    }
+
+    String getRangeAsString()
+    {
+        if(k<=l)
+            return " ( " + k + " , " + l + " ) ";
+        else
+            return " ( " + l + " , " + k + " ) ";
+    }
+
+
 }

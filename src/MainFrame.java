@@ -24,12 +24,10 @@ class MainFrame extends JFrame{
         initFileChoosingButton(labels, textArea, fileChoosingButton);
         addToContainer(labels, container, textArea, fileChoosingButton, userInputButton);
         setVisible(true);
-
     }
 
     private void initUserDataButton(JLabel[] labels, TextArea textArea, JButton button1) {
         button1.addActionListener(e -> {
-
             ArrayList<Double> data = new ArrayList<>();
             fillDataFromUserInput(textArea, data);
             try{
@@ -57,7 +55,8 @@ class MainFrame extends JFrame{
             String filename = jFileChooser.getSelectedFile().getAbsolutePath();
             FileReader fileReader = new FileReader(filename);
             textArea.setText("");
-            try{
+            try
+            {
                 RootValueFinder rootValueFinder = new RootValueFinder(fileReader.getData());
                 labelsUpdate.update(labels, rootValueFinder);
             }
