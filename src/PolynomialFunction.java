@@ -6,7 +6,7 @@ class PolynomialFunction {
 
     PolynomialFunction(List<Double> coefficients)
     {
-        for (int i=4; i<coefficients.size(); i++)
+        for (int i=0; i<coefficients.size(); i++)
         {
             this.coefficients.add(coefficients.get(i));
         }

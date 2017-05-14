@@ -38,7 +38,7 @@ class RootValueFinder {
         this.l = data.get(1);
         this.eps = data.get(2);
         this.max = data.get(3);
-        polynomialFunction = new PolynomialFunction(data);
+        polynomialFunction = new PolynomialFunction(data.subList(4,data.size()));
 
     }
 
