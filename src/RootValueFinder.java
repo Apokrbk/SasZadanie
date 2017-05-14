@@ -4,6 +4,8 @@ class RootValueFinder {
 
     private double k;
     private double l;
+    private double eps;
+    private double max;
 
     double getEps() {
         return eps;
@@ -13,8 +15,7 @@ class RootValueFinder {
         return max;
     }
 
-    private double eps;
-    private double max;
+
 
     PolynomialFunction getPolynomialFunction() {
         return polynomialFunction;
@@ -53,20 +54,23 @@ class RootValueFinder {
         polynomialFunction = new PolynomialFunction(data);
     }
 
-    double findRootValueOfFunction() throws Exception
+    public double findRootValueOfFunction() throws Exception
     {
+        //jeśli ten sam znak funkcji na końcach przedziału to nie można obliczyć miejsca zerowego
         if(areEdgesOfRangeSameSigns(k,l))
-        {
             throw new Exception("Funkcja nie spełnia założeń. Ten sam znak funkcji na końcach przedziału.");
-        }
+        //przypisujemy wartosci przedzialu
         double leftEdge = k;
         double rightEdge = l;
         double rootValue;
         for(int i=0; i<max; i++)
         {
             rootValue = (leftEdge+rightEdge)/2;
+            //sprawdzamy czy wartosc w połowie przedziału jest już wystarczającym przybliżeniem miejsca zerowego funkcji
             if(isValueCloseEnough(rootValue))
                 return rootValue;
+            //sprawdzamy którą połowę przedziału wybrać do następnej iteracji
+            //zmniejszamy przeszukiwany przedział o połowę
             if(!areEdgesOfRangeSameSigns(leftEdge, rootValue))
                 rightEdge = rootValue;
             else

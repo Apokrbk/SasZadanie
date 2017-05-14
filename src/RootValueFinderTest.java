@@ -33,4 +33,10 @@ public class RootValueFinderTest {
         assertEquals(0, rootValueFinder.findRootValueOfFunction(), 0);
     }
 
+    @Test
+    public void findRootValueOfFunction6() throws Exception {
+        RootValueFinder rootValueFinder = new RootValueFinder(-3.0, 5.0, 0.00001, 100,-1.11,0.0,0.0,0.0,0.0, 2.428, -2.99, 5585.182 );
+        assertEquals(0.295793, rootValueFinder.findRootValueOfFunction(), 0.00001);
+    }
+
 }

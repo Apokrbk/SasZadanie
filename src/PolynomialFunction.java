@@ -17,7 +17,7 @@ public class PolynomialFunction {
         Collections.addAll(this.coefficients, coefficients);
     }
 
-    double calculateValueOfFunctionAtTheGivenPoint(double x)
+    public double calculateValueOfFunctionAtTheGivenPoint(double x)
     {
         double value=0;
         int size = coefficients.size();
