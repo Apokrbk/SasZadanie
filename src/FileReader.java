@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
-
 class FileReader {
 
     private ArrayList<Double> data = new ArrayList<>();

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
-
 class MainFrame extends JFrame{
 
     private LabelsUpdate labelsUpdate = new LabelsUpdate();
